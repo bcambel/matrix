@@ -14,7 +14,7 @@ Integration Ideas
 - Sentry
 - NewRelic
 - Munin
-- Jenkins
+- Jenkins/Travis CI
 
 Ideas
 ------------
