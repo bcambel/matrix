@@ -18,7 +18,7 @@ sys.path.insert(0,parentdir)
 
 matrix = Flask(__name__)
 matrix.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/matrix.db'
-
+matrix.secret_key = 'A0Zr98j/3yX R~XaHH!Sw3f22vjekel3tjmN]LWX/,?2RT'
 
 admin = Admin(matrix, name='Matrix Admin')
 DB = SQLAlchemy(matrix)
