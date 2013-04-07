@@ -3,6 +3,9 @@ from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.admin import Admin
 from flask.ext.restless import APIManager
 from flask.ext.login import LoginManager
+from simplekv.memory import DictStore
+from flaskext.kvsession import KVSessionExtension
+
 import os,sys
 
 matrix = None
@@ -20,6 +23,15 @@ matrix.secret_key = 'A0Zr98j/3yX R~XaHH!Sw3f22vjekel3tjmN]LWX/,?2RT'
 
 login_manager = LoginManager()
 login_manager.setup_app(matrix)
+
+store = DictStore()
+
+KVSessionExtension(store, matrix)
+
+login_manager = LoginManager()
+login_manager.login_view = "/login"
+login_manager.session_protection = "strong"
+login_manager.init_app(matrix)
 
 admin = Admin(matrix, name='Matrix Admin')
 DB = SQLAlchemy(matrix)
