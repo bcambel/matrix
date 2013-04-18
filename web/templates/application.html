@@ -1,0 +1,49 @@
+{% extends "master.html" %}
+
+{% block body %}
+<div class="" style='margin-bottom:10px;'>
+
+<a href='#' class='inline-edit' data-type="text" data-title="Enter application name" style='font-size:2em;'>{{app.name}}</a> 
+	{% for env in app.environments %}
+		in {{env.name}},
+		{% endfor %}
+
+		is located at <a class='inline-edit' data-title='Enter repository name' data-inputclass="input-xxlarge" href="{{app.repository or "#"}}" data-type='text'>
+		{{app.repository}}</a>
+</div>
+<div class='row-fluid'>
+	<div class="span3">
+		<h4>Versions</h4>
+	<table class="table">
+		{% for version in app.versions %}
+			<tr>
+				<td>
+					{{version.name}}
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+	</div>
+	<div class="span9">
+		<h4> Features </h4>
+	<table class="table table-stripped table-bordered">
+		{% for feature in app.features %}
+			<tr>
+				<td>
+					{{feature.name}}
+				</td>
+			</tr>
+		{% endfor %}
+	</table>
+
+	</div>
+</div>
+	<hr />
+	
+	
+	<h3> Dependencies </h3>
+	<table>
+
+	</table>
+
+{% endblock %}
